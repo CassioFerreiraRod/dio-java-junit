@@ -1,34 +1,36 @@
 package com.cassioferreirarod.junit;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 public class Pessoa {
     private String nome;
-    private LocalDate nascimento;
+    private LocalDateTime nascimento;
 
-    public Pessoa(String nome, LocalDate nascimento) {
+    public Pessoa(String nome, LocalDateTime nascimento) {
         this.nome = nome;
         this.nascimento = nascimento;
     }
 
-    public String getNome() {
-        return nome;
-    }
+   public int getIdade() {
+        return (int) ChronoUnit.YEARS.between(nascimento, LocalDateTime.now());
+   }
 
-    public LocalDate getNascimento() {
-        return nascimento;
+    public boolean ehMaiorDeIdade() {
+        return getIdade() >= 18;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Pessoa pessoa)) return false;
-        return Objects.equals(getNome(), pessoa.getNome()) && Objects.equals(getNascimento(), pessoa.getNascimento());
+        if (o == null || getClass() != o.getClass()) return false;
+        Pessoa pessoa = (Pessoa) o;
+        return nome.equals(pessoa.nome) && Objects.equals(nascimento, pessoa.nascimento);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getNome(), getNascimento());
+        return Objects.hash(nome, nascimento);
     }
 }
