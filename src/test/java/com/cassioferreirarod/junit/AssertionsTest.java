@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class AssertionsTeste {
+public class AssertionsTest {
     @Test
     void validarLancamentos() {
         int[] primeiroLancamento = {10,20,30,40,50};

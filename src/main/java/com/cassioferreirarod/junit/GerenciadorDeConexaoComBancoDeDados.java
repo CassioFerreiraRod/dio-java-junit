@@ -17,7 +17,7 @@ public class GerenciadorDeConexaoComBancoDeDados {
 
     public static void inserirDados(Pessoa pessoa) {
         // insere pessoa no bd
-        LOGGER.info("inseiu dados");
+        LOGGER.info("inseriu dados");
     }
 
     public static void removeDados(Pessoa pessoa) {
